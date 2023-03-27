@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<link rel="stylesheet" href="css/style3.css">
+<link rel="stylesheet" href="css/Login.css">
 <%@ page import="dto.Account" %>
 <!DOCTYPE html>
 <html>

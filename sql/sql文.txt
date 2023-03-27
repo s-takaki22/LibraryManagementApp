@@ -1,0 +1,68 @@
+CREATE TABLE book3 (
+    id SERIAL PRIMARY KEY,
+    isbn INTEGER NOT NULL,
+    bookname VARCHAR(128) NOT NULL,
+    author VARCHAR(128) NOT NULL,
+    genre_id INTEGER NOT NULL,
+    book_state VARCHAR(32),
+    created_at TIMESTAMP,
+    FOREIGN KEY (genre_id) REFERENCES genre (id)
+);
+
+CREATE TABLE history (
+    id SERIAL PRIMARY KEY,
+    book_id INTEGER NOT NULL,
+    user_id INTEGER NOT NULL,
+    loan_period INTEGER NOT NULL,
+    return_date TIMESTAMP,
+    admin_id INTEGER NOT NULL,
+    created_at TIMESTAMP,
+    FOREIGN KEY (book_id) REFERENCES book3 (id),
+    FOREIGN KEY (user_id) REFERENCES "user" (id),
+    FOREIGN KEY (admin_id) REFERENCES admin (id)
+);
+
+CREATE TABLE "user" (
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(128) NOT NULL,
+    user_mail VARCHAR(256) NOT NULL,
+    nickname VARCHAR(64),
+    gender VARCHAR(8),
+    hashedpw TEXT,
+    salt TEXT,
+    created_at TIMESTAMP
+);
+
+CREATE TABLE review (
+    id SERIAL PRIMARY KEY,
+    user_id INTEGER NOT NULL,
+    isbn INTEGER NOT NULL,
+    rate INTEGER NOT NULL,
+    title VARCHAR(128) NOT NULL,
+    content TEXT,
+    created_at TIMESTAMP,
+    FOREIGN KEY (user_id) REFERENCES "user" (id),
+    FOREIGN KEY (isbn) REFERENCES book3 (isbn)
+);
+
+CREATE TABLE admin (
+    id SERIAL PRIMARY KEY,
+    mail VARCHAR(256) NOT NULL,
+    name VARCHAR(128) NOT NULL,
+    hashedpw TEXT,
+    salt TEXT,
+    created_at TIMESTAMP
+);
+
+CREATE TABLE infomation (
+    id SERIAL PRIMARY KEY,
+    content TEXT NOT NULL,
+    created_at TIMESTAMP,
+    admin_id INTEGER NOT NULL,
+    FOREIGN KEY (admin_id) REFERENCES admin (id)
+);
+
+CREATE TABLE genre (
+    id SERIAL PRIMARY KEY,
+    genre VARCHAR(128) NOT NULL
+);
