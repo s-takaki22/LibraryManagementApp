@@ -1,20 +1,34 @@
 package dto;
 
 public class Register {
+	private String id;
+	private String pass;
 	private String name;
 	private String user_mail;
 	private String nickName;
 	private String gender;
-	private String hashedPassWord;
 	private String salt;
-	public Register(String name, String user_mail, String nickName, String gender, String hashedPassWord, String salt) {
+	public Register(String id, String pass, String name, String user_mail, String nickName, String gender, String salt) {
 		super();
+		this.id = id;
+		this.pass = pass;
 		this.name = name;
 		this.user_mail = user_mail;
 		this.nickName = nickName;
 		this.gender = gender;
-		this.hashedPassWord = hashedPassWord;
 		this.salt = salt;
+	}
+	public String getPass() {
+		return pass;
+	}
+	public void setPass(String pass) {
+		this.pass = pass;
+	}
+	public String getId() {
+		return id;
+	}
+	public void setId(String id) {
+		this.id = id;
 	}
 	public String getName() {
 		return name;
@@ -39,12 +53,6 @@ public class Register {
 	}
 	public void setGender(String gender) {
 		this.gender = gender;
-	}
-	public String getHashedPassWord() {
-		return hashedPassWord;
-	}
-	public void setHashedPassWord(String hashedPassWord) {
-		this.hashedPassWord = hashedPassWord;
 	}
 	public String getSalt() {
 		return salt;

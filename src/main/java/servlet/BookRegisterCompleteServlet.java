@@ -9,20 +9,20 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import dao.BookRegisterDAO;
-import dto.BookRegister;
+import dao.BookDAO;
+import dto.Book;
 
 /**
- * Servlet implementation class SearchBookRegisterForm
+ * Servlet implementation class LoginServlet
  */
-@WebServlet("/SearchBookRegisterForm")
-public class SearchBookRegisterForm extends HttpServlet {
+@WebServlet("/BookRegisterCompleteServlet")
+public class BookRegisterCompleteServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	public SearchBookRegisterForm() {
+	public BookRegisterCompleteServlet() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
@@ -31,27 +31,28 @@ public class SearchBookRegisterForm extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.setCharacterEncoding("UTF-8");
-
-		Long isbn = request.getParameter("isbn");
+		request.getParameter("UTF-8");
+		
+		String isbn = request.getParameter("isbn");
+		String genre = request.getParameter("genre");
 		String bookname = request.getParameter("bookname");
 		String author = request.getParameter("author");
-		String genre = request.getParameter("genre");
-		String bookstate = request.getParameter("bookState");
-
-		BookRegister bookRegister = new BookRegister(isbn, bookname, author, genre, bookstate);
-
-		int result = BookRegisterDAO.registerBookName(bookRegister);
-
+		String state = request.getParameter("state");
+		
+		Book register = new Book(isbn, genre, bookname, author, state);
+		int result = BookDAO.registerBookName(register);
+		
+		String view = "";
 		if(result == 1) {
-			String view = "WEB-INF/search/registerSuccess.jsp";
-			RequestDispatcher dispatcher = request.getRequestDispatcher(view);
-			dispatcher.forward(request, response);
+			// 登録に成功したので、sessionのデータを削除
+			view = "WEB-INF/view/register-account-success.jsp";
 		} else {
-			String view = "WEB-INF/search/registerFail.jsp";
-			RequestDispatcher dispatcher = request.getRequestDispatcher(view);
-			dispatcher.forward(request, response);
+			// 失敗した場合はパラメータ付きで登録画面に戻す
+			view = "WEB-INF/view/register.jsp?error=1";
 		}
+		
+		RequestDispatcher dispatcher = request.getRequestDispatcher(view);
+		dispatcher.forward(request, response);
 	}
 
 	/**

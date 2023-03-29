@@ -1,12 +1,12 @@
 package dto;
 
-public class BookRegister {
-	private Long isbn;
+public class Book {
+	private String isbn;
 	private String bookname;
 	private String author;
 	private String genre;
 	private String bookState;
-	public BookRegister(Long isbn, String bookname, String author, String genre, String bookState) {
+	public Book(String isbn, String bookname, String author, String genre, String bookState) {
 		super();
 		this.isbn = isbn;
 		this.bookname = bookname;
@@ -14,10 +14,10 @@ public class BookRegister {
 		this.genre = genre;
 		this.bookState = bookState;
 	}
-	public Long getIsbn() {
+	public String getIsbn() {
 		return isbn;
 	}
-	public void setIsbn(Long isbn) {
+	public void setIsbn(String isbn) {
 		this.isbn = isbn;
 	}
 	public String getBookname() {
