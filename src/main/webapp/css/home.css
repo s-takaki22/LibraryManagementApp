@@ -15,6 +15,13 @@
         box-shadow: 0 0 10px #ccc;
         width: 400px;
       }
+      table {
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 5px;
+        box-shadow: 0 0 10px #ccc;
+        width: 400px;
+      }
       input[type=text], input[type=password] {
         width: 100%;
         padding: 12px 20px;

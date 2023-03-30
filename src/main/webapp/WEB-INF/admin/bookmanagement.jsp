@@ -11,7 +11,7 @@
 <body>
 	<h1>図書管理機能</h1>
 	<a href="BookRegisterServlet">図書追加</a>
-	<a href="#">図書検索・編集</a>
+	<a href="BookSearchServlet">図書検索</a>
 	<a href="AdminHomeServlet">ホームへ</a>
 </body>
 </html>

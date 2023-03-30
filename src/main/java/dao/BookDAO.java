@@ -7,6 +7,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -30,17 +31,17 @@ public class BookDAO {
 	
 	//図書登録
 	public static int registerBookName(Book bookRegister) {
-		String sql = "INSERT INTO dev_book VALUES(null, ?, ?, ?, ?, ?, null)";
+		String sql = "INSERT INTO dev_book VALUES(default, ?, ?, ?, ?, ?, current_timestamp)";
 		int result = 0;
 		
 		try (
 				Connection con = getConnection();
 				PreparedStatement pstmt = con.prepareStatement(sql);
 				){
-			pstmt.setString(1, bookRegister.getIsbn());
+			pstmt.setInt(1, Integer.parseInt(bookRegister.getIsbn()));
 			pstmt.setString(2, bookRegister.getBookname());
 			pstmt.setString(3, bookRegister.getAuthor());
-			pstmt.setString(4, bookRegister.getGenre());
+			pstmt.setInt(4, Integer.parseInt(bookRegister.getGenre()));
 			pstmt.setString(5, bookRegister.getBookState());
 
 			result = pstmt.executeUpdate();
@@ -56,7 +57,7 @@ public class BookDAO {
 	
 	//検索表示
 	public static List<Book> listBook(String word) {
-		String sql = "SELECT * FROM book WHERE bookname =?";
+		String sql = "SELECT * FROM dev_book WHERE bookname = ?";
 		List<Book> result = new ArrayList<>();
 		try(
 				Connection con = getConnection();
@@ -65,11 +66,21 @@ public class BookDAO {
 			pstmt.setString(1, word);
 			try(ResultSet rs = pstmt.executeQuery()) {
 				while(rs.next()) {
+					int id = rs.getInt("id");
 					String isbn = rs.getString("isbn");
 					String bookname = rs.getString("bookname");
 					String author = rs.getString("author");
-					String genre = rs.getString("genre");
-					Book list = new Book(isbn, bookname, author, genre, null);
+					String genre = rs.getString("genre_id");
+					String bookState = rs.getString("book_state");
+					Timestamp timestamp = rs.getTimestamp("created_at");
+					System.out.println(id);
+					System.out.println(isbn);
+					System.out.println(bookname);
+					System.out.println(author);
+					System.out.println(genre);
+					System.out.println(bookState);
+					System.out.println(timestamp);
+					Book list = new Book(isbn, bookname, author, genre, bookState);
 					result.add(list);
 				}
 			}

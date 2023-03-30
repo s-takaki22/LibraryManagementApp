@@ -16,14 +16,14 @@ import dto.Book;
 /**
  * Servlet implementation class SearchBookListForm
  */
-@WebServlet("/SearchBookListForm")
-public class SearchBookListForm extends HttpServlet {
+@WebServlet("/SearchBookListFormUser")
+public class SearchBookListFormUser extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public SearchBookListForm() {
+    public SearchBookListFormUser() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -38,6 +38,15 @@ public class SearchBookListForm extends HttpServlet {
 		
 		List<Book> list = BookDAO.listBook(word);
 		request.setAttribute("booklist", list);
+		
+//		for(int i=0; i<list.size(); i++) {
+//			System.out.println("表示します");
+//			System.out.println((list.get(i)).getIsbn());
+//			System.out.println((list.get(i)).getBookname());
+//			System.out.println((list.get(i)).getAuthor());
+//			System.out.println((list.get(i)).getGenre());
+//			System.out.println((list.get(i)).getBookState());
+//		}
 		
 		String view = "WEB-INF/user/list.jsp";
 		RequestDispatcher dispatcher = request.getRequestDispatcher(view);
