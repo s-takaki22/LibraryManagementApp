@@ -1,6 +1,7 @@
 package servlet;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -9,26 +10,36 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-/**
- * Servlet implementation class LoginServlet
- */
-@WebServlet("/BookSearchServlet")
-public class BookSearchServlet extends HttpServlet {
-	private static final long serialVersionUID = 1L;
+import dao.UserDAO;
+import dto.Register;
 
-	/**
-	 * @see HttpServlet#HttpServlet()
-	 */
-	public BookSearchServlet() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
+/**
+ * Servlet implementation class SearchBookListForm
+ */
+@WebServlet("/SearchUserListServlet")
+public class SearchUserListServlet extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+       
+    /**
+     * @see HttpServlet#HttpServlet()
+     */
+    public SearchUserListServlet() {
+        super();
+        // TODO Auto-generated constructor stub
+    }
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String view = "WEB-INF/admin/booksearch.jsp";
+		request.getParameter("UTF-8");
+		String word = request.getParameter("search");
+		System.out.println(word);
+		
+		List<Register> list = UserDAO.listUser(word);
+		request.setAttribute("userlist", list);
+		
+		String view = "WEB-INF/user/userlist.jsp";
 		RequestDispatcher dispatcher = request.getRequestDispatcher(view);
 		dispatcher.forward(request, response);
 	}

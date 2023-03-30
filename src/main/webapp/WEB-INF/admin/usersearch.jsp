@@ -1,3 +1,4 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="ja">
 	<head>
@@ -10,29 +11,16 @@
 	<body>
 	<h1 class="top">○○図書館</h1>
   <p>図書検索</p>
+  <p style="margin-top: 4em;">検索したいを入力してください</p>
   <div class="search-container">
-    <form action="SearchBookListFormUserServlet" method="get">
-      <input type="text" placeholder="図書名を入力" name="search">
+    <form action="SearchUserListServlet" method="get">
+      <input type="text" placeholder="ユーザ名を入力" name="search">
       <button type="submit">検索</button>
     </form>
+    <a href="AdminHomeServlet">ホームへ</a>
   </div>
-    <div class="container">
-    	<div class="login">
-        <form action="LoginUser" method="post">
-          <h2>ログイン</h2>
-          <label for="username">ユーザー名:<br>
-          	<input type="text" id="username" name="username" required>
-          </label><br>
-          <label for="password">パスワード:<br>
-          	<input type="password" id="password" name="password" required><br><br>
-          </label><br>
-          <button style="background-color:#FFCC33;" type="submit" value="ログイン">ログイン</button>
-        </form>
-      <h3><a href="LoginAdminServlet">管理者ログイン</a></h3>
-    	</div>
-      </div>
       <footer>
-		<p class="large">  図書館</p>
+      	<p class="large">  図書館</p>
 		<p class="large">〒020-1145 oo県oo市oo駅n通1-7-1</p>
 		<p class="large">電話:019-606-1330:Fax:019-606-1221</p>
 		<p class="large">All Rights Reserved, Copyright (c) Iwate Prefectural Library</p>

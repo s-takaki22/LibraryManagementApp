@@ -1,7 +1,6 @@
 package servlet;
 
 import java.io.IOException;
-import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -9,46 +8,40 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
-import dao.BookDAO;
-import dto.Book;
+import dto.AdminRegister;
 
 /**
- * Servlet implementation class SearchBookListForm
+ * Servlet implementation class LoginServlet
  */
-@WebServlet("/SearchBookListFormUser")
-public class SearchBookListFormUser extends HttpServlet {
+@WebServlet("/AdminRegisterCheckServlet")
+public class AdminRegisterCheckServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public SearchBookListFormUser() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
+
+	/**
+	 * @see HttpServlet#HttpServlet()
+	 */
+	public AdminRegisterCheckServlet() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.getParameter("UTF-8");
-		String word = request.getParameter("search");
-		System.out.println(word);
 		
-		List<Book> list = BookDAO.listBook(word);
-		request.setAttribute("booklist", list);
+		String name = request.getParameter("adminname");
+		String mail = request.getParameter("adminmail");
+		String pass = request.getParameter("adminpass");
 		
-//		for(int i=0; i<list.size(); i++) {
-//			System.out.println("表示します");
-//			System.out.println((list.get(i)).getIsbn());
-//			System.out.println((list.get(i)).getBookname());
-//			System.out.println((list.get(i)).getAuthor());
-//			System.out.println((list.get(i)).getGenre());
-//			System.out.println((list.get(i)).getBookState());
-//		}
+		AdminRegister adminRegister = new AdminRegister(name, mail, pass, null);
+		HttpSession session = request.getSession();
+		session.setAttribute("adminRegister", adminRegister);
 		
-		String view = "WEB-INF/user/list.jsp";
+		String view = "WEB-INF/admin/adminregistercheck.jsp";
 		RequestDispatcher dispatcher = request.getRequestDispatcher(view);
 		dispatcher.forward(request, response);
 	}

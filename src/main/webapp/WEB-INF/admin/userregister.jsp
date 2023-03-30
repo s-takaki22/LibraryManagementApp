@@ -17,8 +17,8 @@
     </form>
   </div>
     <div class="container">
-        <form action="RegisterAccountServlet" method="post">
-          <h2>仮登録</h2>
+        <form action="UserRegisterCheckServlet" method="post">
+          <h2>利用者登録</h2>
           <label for="id">id:</label><br>
           <input type="text" id="id" name="id" required><br>
           <label for="name">ユーザー名:</label><br>
@@ -31,7 +31,7 @@
           <input type="text" id="nickName" name="nickName" required><br>
           <label for="gender">性別:</label><br>
           <input type="text" id="gender" name="gender" required><br>
-          <input type="submit" value="仮登録">
+          <input type="submit" value="登録">
         </form>
       </div>
       <footer>
