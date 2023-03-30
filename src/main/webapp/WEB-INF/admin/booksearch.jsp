@@ -11,24 +11,13 @@
 	<h1 class="top">○○図書館</h1>
   <p>図書検索</p>
   <div class="search-container">
-    <form action="SearchBookListFormUser" method="get">
+  	<h3>本の題名を入力してください</h3>
+    <form action="SearchBookListFormAdminServlet" method="get">
       <input type="text" placeholder="キーワードを入力してください" name="search">
       <button type="submit">検索</button>
     </form>
+    <h3>関連した本を表示します</h3>
   </div>
-    <div class="container">
-        <form action="LoginUser" method="post">
-          <h2>ログイン</h2>
-          <label for="username">ユーザー名:<br>
-          	<input type="text" id="username" name="username" required>
-          </label><br>
-          <label for="password">パスワード:<br>
-          	<input type="password" id="password" name="password" required><br><br>
-          </label><br>
-          <input type="submit" value="ログイン">
-        </form>
-      <h2><a href="registerPorn">仮登録</a></h2><br>
-      <h2><a href="LoginAdminServlet">管理者ログイン</a></h2>
       </div>
       <footer>
         <p>&copy; 2023, サンプルウェブサイト</p>

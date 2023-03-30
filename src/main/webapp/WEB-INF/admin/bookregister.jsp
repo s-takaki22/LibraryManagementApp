@@ -17,7 +17,13 @@
 		</label>
 		<label>
 			ジャンル
-			<input type="text" id="genre" name="genre" required><br>
+			<select name="genre">
+				<option value="">選択してください</option>
+				<option value="1">少年漫画</option>
+				<option value="2">日本文学</option>
+				<option value="3">西洋文学</option>
+				<option value="4">雑誌</option>
+			</select><br>
 		</label>
 		<label>
 			図書名
@@ -28,11 +34,11 @@
 			<input type="text" id="author" name="author" required><br>
 		</label>
 		<label>
-			<input type="radio" id="state" name="state" required>
+			<input type="radio" id="state" name="state" value="新書" required>
 			新書
 		</label>
 		<label>
-			<input type="radio" id="state" name="state" required>
+			<input type="radio" id="state" name="state" value="旧書" required>
 			旧書<br>
 		</label>
 		<input type="submit" value="登録">

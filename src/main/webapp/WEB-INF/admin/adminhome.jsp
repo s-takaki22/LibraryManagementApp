@@ -18,6 +18,6 @@
 	<a href="#">お知らせ入力画面</a>
 	<a href="#">管理者新規作成へ</a>
 	<a href="#">利用者新規登録へ</a>
-	<a href="#">ログアウト</a>
+	<a href="LogoutServlet">ログアウト</a>
 </body>
 </html>
