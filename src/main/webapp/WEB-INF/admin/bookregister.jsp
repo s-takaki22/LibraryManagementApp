@@ -5,7 +5,7 @@
 	<meta charset="UTF-8">
 	<link rel="stylesheet" href="https://unpkg.com/ress/dist/ress.min.css">
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Philosopher">
-	<link rel="stylesheet" href="css/home.css">
+	<link rel="stylesheet" href="css/addition.css">
 	<title>Home</title>
 </head>
 <body>

@@ -14,7 +14,7 @@
 	<h1 class="top">ユーザ一覧</h1>
 			<%
 			request.setCharacterEncoding("UTF-8");
-			List<Register> list = (List<Register>)request.getAttribute("search");
+			List<Register> list = (List<Register>)request.getAttribute("userlist");
 			
 			for(int i = 0; i<list.size(); i++) {
 			%>
@@ -23,12 +23,6 @@
 				<p>ニックネーム:<%= (list.get(i)).getNickName() %></p>
 				<p>名前: <%= (list.get(i)).getName() %></p>
 				<p>メール:<%= (list.get(i)).getUser_mail() %></p>
-			<!--<p><span class="star5_rating" data-rate="4.5"></span> 星4.5</p>
-            <div style="margin: auto;">
-                <a href="#" align="right"><button>a</button></a>
-            </div>
-            </div>
-            -->	
         </div>
 	</div>
 			<% } %>

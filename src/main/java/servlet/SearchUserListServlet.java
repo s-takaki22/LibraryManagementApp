@@ -39,7 +39,7 @@ public class SearchUserListServlet extends HttpServlet {
 		List<Register> list = UserDAO.listUser(word);
 		request.setAttribute("userlist", list);
 		
-		String view = "WEB-INF/user/userlist.jsp";
+		String view = "WEB-INF/admin/userlist.jsp";
 		RequestDispatcher dispatcher = request.getRequestDispatcher(view);
 		dispatcher.forward(request, response);
 	}

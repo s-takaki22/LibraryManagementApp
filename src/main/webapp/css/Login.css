@@ -1,0 +1,162 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: whight;
+}
+
+.top{
+       font-size: 25px;
+	      text-align:center;
+        /* width: 200px; */
+        height: 50px;
+        background: #e7eeff;
+        border: 1px solid #707070;
+        }
+
+h2{
+  font-size: 20px;
+	color: blue;
+  	bottom: 0;
+  	left: 0;
+}
+
+ .link-style1 {
+  display: block;
+  margin-right: auto;
+  margin-left: 0;
+  text-align: left;
+}
+link-style2 {
+ position: absolute;
+  top: 300px;
+  right: 100px;
+}
+
+link-style3 {
+ position: absolute;
+ text-decoration: none;
+ font-size: 20px;
+  top: 350px;
+  right: 100px;
+}
+
+
+a {
+  font-family: Meiryo;
+font-weight: normal;
+background-color: #aebff8;
+font-size: 1.5rem;
+padding: 1px 40px;
+}
+
+a1{
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  transform-origin: left top;
+}
+p {
+ text-align: center;	
+}
+
+input[type="submit"] {
+font-family: Meiryo;
+font-weight: normal;
+background-color: #aebff8;
+font-size: 1.5rem;
+padding: 1px 40px;
+}
+
+
+
+
+
+span1 {
+font-family: Meiryo;
+font-weight: normal;
+font-size: 30px;
+margin-left: 45%; 
+margin-bottom: 300px;
+background-clip: text;
+background-color: #aebff8;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content:縲�center;
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+form label {
+  position: relative; /* 隕∫ｴ�縺ｮ陦ｨ遉ｺ菴咲ｽｮ繧貞渕貅悶↓縺吶ｋ縺溘ａ縺ｫ縲｝osition繧池elative縺ｫ險ｭ螳壹☆繧� */
+  left: -230px; 
+  margin-bottom: 20px;
+}
+
+form label1 {
+  position: relative; /* 隕∫ｴ�縺ｮ陦ｨ遉ｺ菴咲ｽｮ繧貞渕貅悶↓縺吶ｋ縺溘ａ縺ｫ縲｝osition繧池elative縺ｫ險ｭ螳壹☆繧� */
+  left: -200px; 
+  margin-bottom: 20px;
+}
+
+form label2 {
+  position: relative; /* 隕∫ｴ�縺ｮ陦ｨ遉ｺ菴咲ｽｮ繧貞渕貅悶↓縺吶ｋ縺溘ａ縺ｫ縲｝osition繧池elative縺ｫ險ｭ螳壹☆繧� */
+  left: -220px; 
+  margin-bottom: 20px;
+}
+
+form label3 {
+  position: relative; /* 隕∫ｴ�縺ｮ陦ｨ遉ｺ菴咲ｽｮ繧貞渕貅悶↓縺吶ｋ縺溘ａ縺ｫ縲｝osition繧池elative縺ｫ險ｭ螳壹☆繧� */
+  left: -195px; 
+  margin-bottom: 20px;
+}
+
+
+form input[type="text"]{
+  width: 80%;
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  box-sizing: border-box;
+  font-size: 16px;
+  cursor: pointer;
+}
+form input[type="email"],
+form input[type="password"],
+form input[type="radio"] 
+form input[type="submit"] {
+  width: 80%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  box-sizing: border-box;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+form input[type="submit"] {
+font-family: Meiryo;
+font-weight: normal;
+background-color: #aebff8;
+font-size: 1.5rem;
+padding: 1px 40px;
+}
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  

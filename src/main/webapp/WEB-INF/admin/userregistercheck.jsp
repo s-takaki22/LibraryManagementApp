@@ -6,32 +6,27 @@
 	<meta charset="UTF-8">
 	<link rel="stylesheet" href="https://unpkg.com/ress/dist/ress.min.css">
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Philosopher">
-	<link rel="stylesheet" href="css/home.css">
+	<link rel="stylesheet" href="css/Login.css">
 	<title>Home</title>
 </head>
 <body>
 	<h1>管理者新規登録</h1>
-	<h1>以下の内容でよろしいでしょうか</h1>
 	<%Register register = (Register)session.getAttribute("register"); %>
-		<label>
-			ID:<%=register.getId() %>
-		</label>
-		<label>
-			名前:<%=register.getName() %>
-		</label>
-		<label>
-			パスワード:*********（セキュリティ上の都合により伏せています。）
-		</label>
-		<label>
-			メール:<%=register.getUser_mail() %>
-		</label>
-		<label>
-			ニックネーム:<%=register.getNickName() %>
-		</label>
-		<label>
-			名前:<%=register.getGender() %>
-		</label>
-		<br>
+	<form>
+		<h2>以下の内容でよろしいでしょうか</h2>
+		<label>ID:</label>
+		<input type="text" value="<%=register.getId() %>" disabled>
+		<label2>名前:</label2>
+		<input type="text" value="<%=register.getName() %>" disabled>
+		<label3>パスワード:</label3>
+		<input type="text" value="*******" disabled>
+		<label2>メール:</label2>
+		<input type="text" value="<%=register.getUser_mail() %>" disabled>
+		<label3>ニックネーム:</label3>
+		<input type="text" value="<%=register.getNickName() %>" disabled>
+		<label2>性別:</label2>
+		<input type="text" value="<%=register.getGender() %>" disabled>
 		<a href="RegisterCompleteServlet">送信</a>
+	</form>
 </body>
 </html>

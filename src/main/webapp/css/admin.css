@@ -1,0 +1,178 @@
+.a {
+ position: absolute;
+  color: blue;
+  text-decoration: none;
+  font-size: 30px;
+  top: 100px; /* 上から50pxの位置に配置 */
+  left: 100px; /* 左から100pxの位置に配置 */
+}
+.b {
+ position: absolute;
+  color: blue;
+  text-decoration: none;
+  font-size: 30px;
+  top: 100px; /* 上から50pxの位置に配置 */
+  left: 400px; /* 左から100pxの位置に配置 */
+}
+.c {
+ position: absolute;
+  color: blue;
+  text-decoration: none;
+  font-size: 30px;
+  top: 100px; /* 上から50pxの位置に配置 */
+  left: 800px; /* 左から100pxの位置に配置 */
+}
+
+.d{
+ position: absolute;
+  color: blue;
+  text-decoration: none;
+  font-size: 30px;
+  top: 250px; /* 上から50pxの位置に配置 */
+  left: 100px; /* 左から100pxの位置に配置 */
+}
+.e {
+ position: absolute;
+  color: blue;
+  text-decoration: none;
+  font-size: 30px;
+  top: 250px; /* 上から50pxの位置に配置 */
+  left: 400px; /* 左から100pxの位置に配置 */
+}
+.f {
+ position: absolute;
+  color: blue;
+  text-decoration: none;
+  font-size: 30px;
+  top: 250px; /* 上から50pxの位置に配置 */
+  left: 800px; /* 左から100pxの位置に配置 */
+}
+
+.g{
+ position: absolute;
+  color: red;
+  font-size: 30px;
+  top: 400px; /* 上から50pxの位置に配置 */
+  left: 200px; /* 左から100pxの位置に配置 */
+}
+.h {
+ position: absolute;
+  color: red;
+  font-size: 30px;
+  top: 400px; /* 上から50pxの位置に配置 */
+  left: 600px; /* 左から100pxの位置に配置 */
+}
+.i {
+  position: fixed;
+  text-decoration: none;
+  bottom: 0;
+  left: 0;
+  color:white;
+  transform-origin: left top;
+font-weight: normal;
+font-size: 30px;
+background-clip: text;
+background-color: red;
+}
+
+     form input[type="text"]{
+  width: 80%;
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  box-sizing: border-box;
+  font-size: 16px;
+  cursor: pointer;
+}
+form input[type="email"]{
+  width: 80%;
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  box-sizing: border-box;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+input[type="password"]{
+  width: 80%;
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  box-sizing: border-box;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+form input[type="password"]{
+  width: 80%;
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  box-sizing: border-box;
+  font-size: 16px;
+  cursor: pointer;
+}
+form input[type="submit"] {
+display: flex;
+  justify-content: center;
+margin: auto;
+left:300px;
+font-family: Meiryo;
+color:white;
+font-weight: normal;
+background-color: red;
+padding: 1px 40px;
+}
+
+input[type="submit"] {
+display: flex;
+  justify-content: center;
+margin: auto;
+left:300px;
+font-family: Meiryo;
+color:white;
+font-weight: normal;
+background-color: red;
+padding: 1px 40px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+p{
+	display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.link-style3 {
+position: fixed;
+font-size: 24px;	
+color:black;
+ text-decoration: none;
+  bottom: 0;
+  left: 0;
+}
+
+p.style4:after {
+	content: "________________________";
+  text-decoration: underline;
+}
+
+h3{
+	color: blue;
+  text-align: center;
+  position: absolute;
+  font-size: 40px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
