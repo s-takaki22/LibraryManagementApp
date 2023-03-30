@@ -17,14 +17,14 @@ import util.GenerateHashedPw;
 /**
  * Servlet implementation class LoginServlet
  */
-@WebServlet("/LoginServlet")
-public class LoginServlet extends HttpServlet {
+@WebServlet("/LoginUserServlet")
+public class LoginUserServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	public LoginServlet() {
+	public LoginUserServlet() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
@@ -66,7 +66,7 @@ public class LoginServlet extends HttpServlet {
 			HttpSession session = request.getSession();
 			session.setAttribute("user", account);
 
-			String view = "WEB-INF/view/account-page.jsp";
+			String view = "WEB-INF/view/loginhome.jsp";
 			RequestDispatcher dispatcher = request.getRequestDispatcher(view);
 			dispatcher.forward(request, response);
 		}

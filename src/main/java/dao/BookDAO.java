@@ -10,9 +10,9 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import dto.BookRegister;
+import dto.Book;
 
-public class BookRegisterDAO {
+public class BookDAO {
 	private static Connection getConnection() throws URISyntaxException, SQLException {
 		try {
 			Class.forName("org.postgresql.Driver");
@@ -29,15 +29,15 @@ public class BookRegisterDAO {
 	}
 	
 	//図書登録
-	public static int registerBookName(BookRegister bookRegister) {
-		String sql = "INSERT INTO book VALUES(?, ?, ?, ?, ?)";
+	public static int registerBookName(Book bookRegister) {
+		String sql = "INSERT INTO dev_book VALUES(null, ?, ?, ?, ?, ?, null)";
 		int result = 0;
 		
 		try (
 				Connection con = getConnection();
 				PreparedStatement pstmt = con.prepareStatement(sql);
 				){
-			pstmt.setLong(1, bookRegister.getIsbn());
+			pstmt.setString(1, bookRegister.getIsbn());
 			pstmt.setString(2, bookRegister.getBookname());
 			pstmt.setString(3, bookRegister.getAuthor());
 			pstmt.setString(4, bookRegister.getGenre());
@@ -54,21 +54,22 @@ public class BookRegisterDAO {
 		return result;
 	}
 	
-	//一覧表示
-	public static List<BookRegister> listBookName() {
-		String sql = "SELECT * FROM book";
-		List<BookRegister> result = new ArrayList<>();
+	//検索表示
+	public static List<Book> listBook(String word) {
+		String sql = "SELECT * FROM book WHERE bookname =?";
+		List<Book> result = new ArrayList<>();
 		try(
 				Connection con = getConnection();
 				PreparedStatement pstmt = con.prepareStatement(sql);
 				){
+			pstmt.setString(1, word);
 			try(ResultSet rs = pstmt.executeQuery()) {
 				while(rs.next()) {
-					Long isbn = rs.getLong("isbn");
+					String isbn = rs.getString("isbn");
 					String bookname = rs.getString("bookname");
 					String author = rs.getString("author");
 					String genre = rs.getString("genre");
-					BookRegister list = new BookRegister(isbn, bookname, author, genre, null);
+					Book list = new Book(isbn, bookname, author, genre, null);
 					result.add(list);
 				}
 			}
