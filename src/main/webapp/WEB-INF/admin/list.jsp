@@ -14,7 +14,7 @@
 <body>
 	<h1 class="top">図書一覧</h1>
 	<div class="search-container">
-		<form action="SearchBookListFormUserServlet" method="get">
+		<form action="SearchBookListFormUser" method="get">
 			<input type="text" placeholder="キーワードを入力してください" name="search">
 			<button type="submit">検索</button>
 		</form>

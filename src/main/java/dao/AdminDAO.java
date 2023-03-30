@@ -7,16 +7,14 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Timestamp;
-import java.util.ArrayList;
-import java.util.List;
 
+import dto.AdminRegister;
 import dto.Register;
 import util.GenerateHashedPw;
 import util.GenerateSalt;
 
 
-public class UserDAO {
+public class AdminDAO {
 	private static Connection getConnection() throws URISyntaxException, SQLException {
 		try {
 			Class.forName("org.postgresql.Driver");
@@ -33,25 +31,22 @@ public class UserDAO {
 	}
 	
 	//会員登録（仮）
-		public static int registerMember(Register register) {
-			String sql = "INSERT INTO dev_user VALUES(?, ?, ?, ?, ?, ?, ?)";
+		public static int registerAdmin(AdminRegister adminRegister) {
+			String sql = "INSERT INTO dev_admin VALUES(default, ?, ?, ?, ?, NOW())";
 			int result = 0;
 			
 			String salt = GenerateSalt.getSalt(32);
 			
-			String hashedPw = GenerateHashedPw.getSafetyPassword(register.getPass(), salt);
+			String hashedPw = GenerateHashedPw.getSafetyPassword(adminRegister.getPass(), salt);
 			
 			try (
 					Connection con = getConnection();
 					PreparedStatement pstmt = con.prepareStatement(sql);
 					){
-				pstmt.setString(1, register.getId());
-				pstmt.setString(2, register.getName());
-				pstmt.setString(3, register.getUser_mail());
-				pstmt.setString(4, register.getNickName());
-				pstmt.setString(5, register.getGender());
-				pstmt.setString(6, hashedPw);
-				pstmt.setString(7, salt);
+				pstmt.setString(1, adminRegister.getMail());
+				pstmt.setString(2, adminRegister.getName());
+				pstmt.setString(3, hashedPw);
+				pstmt.setString(4, salt);
 
 				result = pstmt.executeUpdate();
 				
@@ -120,37 +115,5 @@ public class UserDAO {
 			e.printStackTrace();
 		}
 		return null;
-	}
-	
-	//ユーザ検索
-	public static List<Register> listUser(String word){
-		String sql = "SELECT * FROM dev_user WHERE name LIKE ?";
-		List<Register> result = new ArrayList<>();
-		
-		try(
-				Connection con = getConnection();
-				PreparedStatement pstmt = con.prepareStatement(sql);
-				){
-			pstmt.setString(1, "%" + word + "%");
-			try(ResultSet rs = pstmt.executeQuery()) {
-				while(rs.next()) {
-					String id = rs.getString("id");
-					String name = rs.getString("name");
-					String mail = rs.getString("user_mail");
-					String nickName = rs.getString("nickname");
-					String gender = rs.getString("gender");
-					Timestamp timestamp = rs.getTimestamp("created_at");
-					Register list = new Register(id, null, name, mail, nickName, gender, null);
-					result.add(list);
-				}
-			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} catch (URISyntaxException e) {
-			e.printStackTrace();
-		} finally {
-			System.out.println("全件表示しました。");
-		}
-		return result;
 	}
 }

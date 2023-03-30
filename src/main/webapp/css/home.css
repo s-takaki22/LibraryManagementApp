@@ -8,7 +8,7 @@
         align-items: center;
         height: 100vh;
       }
-      form {
+      .login {
         background-color: #fff;
         padding: 20px;
         border-radius: 5px;
@@ -84,12 +84,17 @@
           button[type=submit]:hover {
             background-color: #45a049;
           }
-          footer {
-            width: 100%;
-            text-align: center;
-            margin: 20px 0;
-          }
           p{
             font-size: 25px;
             text-align:center;
           }
+          footer {
+    background-image: url(image/book.jpg);
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+  }
+  footer img {
+    width: 100px;
+    height: 100px;
+  }

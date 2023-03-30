@@ -12,14 +12,14 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Servlet implementation class LoginServlet
  */
-@WebServlet("/BookSearchServlet")
-public class BookSearchServlet extends HttpServlet {
+@WebServlet("/UserRegisterServlet")
+public class UserRegisterServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	public BookSearchServlet() {
+	public UserRegisterServlet() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
@@ -28,7 +28,7 @@ public class BookSearchServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String view = "WEB-INF/admin/booksearch.jsp";
+		String view = "WEB-INF/admin/userregister.jsp";
 		RequestDispatcher dispatcher = request.getRequestDispatcher(view);
 		dispatcher.forward(request, response);
 	}

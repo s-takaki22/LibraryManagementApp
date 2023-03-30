@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import dto.Book;
+import dto.Genre;
 
 public class BookDAO {
 	private static Connection getConnection() throws URISyntaxException, SQLException {
@@ -57,13 +58,42 @@ public class BookDAO {
 	
 	//検索表示
 	public static List<Book> listBook(String word) {
-		String sql = "SELECT * FROM dev_book WHERE bookname = ?";
+		String sql = "SELECT * FROM dev_book WHERE bookname LIKE ?";
 		List<Book> result = new ArrayList<>();
+		if(word == "") {
+			sql = "SELECT * FROM dev_book";
+			try(
+					Connection con = getConnection();
+					PreparedStatement pstmt = con.prepareStatement(sql);
+					){
+				try(ResultSet rs = pstmt.executeQuery()) {
+					while(rs.next()) {
+						int id = rs.getInt("id");
+						String isbn = rs.getString("isbn");
+						String bookname = rs.getString("bookname");
+						String author = rs.getString("author");
+						String genre = rs.getString("genre_id");
+						String bookState = rs.getString("book_state");
+						Timestamp timestamp = rs.getTimestamp("created_at");
+						Book list = new Book(isbn, bookname, author, genre, bookState);
+						result.add(list);
+					}
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			} catch (URISyntaxException e) {
+				e.printStackTrace();
+			} finally {
+				System.out.println("全件表示しました。");
+			}
+			return result;
+		} else {
+			
 		try(
 				Connection con = getConnection();
 				PreparedStatement pstmt = con.prepareStatement(sql);
 				){
-			pstmt.setString(1, word);
+			pstmt.setString(1, "%" + word + "%");
 			try(ResultSet rs = pstmt.executeQuery()) {
 				while(rs.next()) {
 					int id = rs.getInt("id");
@@ -73,13 +103,6 @@ public class BookDAO {
 					String genre = rs.getString("genre_id");
 					String bookState = rs.getString("book_state");
 					Timestamp timestamp = rs.getTimestamp("created_at");
-					System.out.println(id);
-					System.out.println(isbn);
-					System.out.println(bookname);
-					System.out.println(author);
-					System.out.println(genre);
-					System.out.println(bookState);
-					System.out.println(timestamp);
 					Book list = new Book(isbn, bookname, author, genre, bookState);
 					result.add(list);
 				}
@@ -92,6 +115,31 @@ public class BookDAO {
 			System.out.println("全件表示しました。");
 		}
 		return result;
+		}
+	}
+	
+	public static Genre searchGenre(String id) {
+		String sql = "SELECT genre FROM dev_genre WHERE id = ?";
+		
+		try (
+				Connection con = getConnection();
+				PreparedStatement pstmt = con.prepareStatement(sql);
+				) {
+			pstmt.setInt(1, Integer.parseInt(id));
+			
+			try (ResultSet rs = pstmt.executeQuery()) {
+				if(rs.next()) {
+					String genre = rs.getString("genre");
+					
+					return new Genre(null, genre);
+				}
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} catch (URISyntaxException e) {
+			e.printStackTrace();
+		}
+		return null;
 	}
 	
 	//削除
