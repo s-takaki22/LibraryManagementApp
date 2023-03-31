@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import="dto.Register" %>
 <!DOCTYPE html>
-<html>
+<html lang = "ja">
 <head>
 	<meta charset="UTF-8">
 	<link rel="stylesheet" href="https://unpkg.com/ress/dist/ress.min.css">
@@ -11,6 +11,7 @@
 </head>
 <body>
 	<h1>管理者新規登録</h1>
+	<%request.setCharacterEncoding("UTF-8");%>
 	<%Register register = (Register)session.getAttribute("register"); %>
 	<form>
 		<h2>以下の内容でよろしいでしょうか</h2>
