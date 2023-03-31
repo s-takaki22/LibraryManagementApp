@@ -78,7 +78,7 @@ public class UserDAO {
 			try (ResultSet rs = pstmt.executeQuery()){
 
 				if(rs.next()) {
-					String salt = rs.getString("solt");
+					String salt = rs.getString("salt");
 					System.out.println("ソルト取得完了!");
 					return salt;
 
